@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import { Dispatch, useEffect } from 'react'
 
 
-const SetName = ({setUsername, newName}) => {
+const SetName = ({setUsername, newName}: {setUsername: Dispatch<string>, newName: string}) => {
     if (newName == "" || newName == null) {
         return (
             <>
@@ -11,9 +11,10 @@ const SetName = ({setUsername, newName}) => {
             </>
             )
     } else {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
         useEffect(() => {
             setUsername(newName);
-          }, []);
+          }, [newName, setUsername]);
     }
     return "";
 };

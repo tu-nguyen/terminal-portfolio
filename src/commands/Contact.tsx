@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react'
 import { link_map } from '../data/links'
 
 
-const Contact = ({name}) => {
-    function ContactLink({name}) {
+const Contact = ({name}: {name: string | null}) => {
+    function ContactLink({name}: {name: string | null}) {
         if (name == "" || name == null) {
             return (
                 <>

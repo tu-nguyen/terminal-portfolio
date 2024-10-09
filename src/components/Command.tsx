@@ -14,21 +14,48 @@ import History from "../commands/History";
 
 
 const Command = (
-    cmd: any, 
-    args: any,
-    output_count, 
-    username, 
-    hostname, 
-    path, 
-    symbol,
-    setUsername,
-    setHostname,
-    setOutput,
-    setTheme,
-    history,
-) => {
+    cmd: string, 
+    args: string[],
+    output_count: number, 
+    username: string, 
+    hostname: string, 
+    path: string, 
+    symbol: string,
+    setUsername: { (value: React.SetStateAction<string>): void; (value: React.SetStateAction<string>): void; },
+    _setHostname: { (value: React.SetStateAction<string>): void; (value: React.SetStateAction<string>): void; },
+    setOutput: { (value: React.SetStateAction<{
+        id?: number;
+        username: string;
+        hostname: string;
+        path: string;
+        symbol: string;
+        command: string;
+        args: string[] | string;
+        out: unknown;
+    }[]>): void; (value: React.SetStateAction<{
+        id?: number;
+        username: string;
+        hostname: string;
+        path: string;
+        symbol: string;
+        command: string;
+        args: string[] | string;
+        out: unknown;
+    }[]>): void; },
+    setTheme: { (value: React.SetStateAction<string>): void; (value: React.SetStateAction<string>): void; },
+    history: string[],
+): {
+    id?: number;
+    username: string;
+    hostname: string;
+    path: string;
+    symbol: string;
+    command: string;
+    args: string[] | string;
+    out: unknown;
+} => {
 
-    var newOut = {
+    const newOut = {
         "test": "test\n",
         "welcome": <Welcome />,
         "help": <Help />,
@@ -65,18 +92,16 @@ const Command = (
         "echo": <Echo args={args.join(" ")} />,
     }[cmd]
 
-    return (
-        {
-            "id": output_count,
-            "username": username,
-            "hostname": hostname,
-            "path": path,
-            "symbol": symbol,
-            "command": cmd,
-            "args": args.join(" "),
-            "out": newOut,
-        }
-    )
+    return ({
+        "id": output_count,
+        "username": username,
+        "hostname": hostname,
+        "path": path,
+        "symbol": symbol,
+        "command": cmd,
+        "args": args.join(" "),
+        "out": newOut,
+    })
 }
 
 export default Command;

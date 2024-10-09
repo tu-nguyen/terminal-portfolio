@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Command from '../components/Command';
 import Output from '../components/Output';
@@ -5,8 +6,18 @@ import { link_map } from '../data/links'
 import Welcome from '../commands/Welcome';
 
 
+interface OutputType {
+    id?: number;
+    username: string;
+    hostname: string;
+    path: string;
+    symbol: string;
+    command: string;
+    args: string[] | string;
+    out: unknown;
+};
 
-var output_count = 1
+let output_count = 1
 
 const Terminal = () => {
     const [input, setInput] = useState("");
@@ -14,31 +25,41 @@ const Terminal = () => {
     const [pointer, setPointer] = useState(-1);
     const [username, setUsername] = useState("guest")
     const [hostname, setHostname] = useState("tu-nguyen.github.io")
-    const [path, setPath] = useState("~")
-    const [symbol, setSymbol] = useState("$")
+    const [path] = useState("~") // temp removed setPath
+    const [symbol] = useState("$") // temp removed setSymbol
     const [theme, setTheme] = useState("ubuntu")
-    const [link, setLink] = useState("")
+    // const [link, setLink] = useState("")
     const containerRef = useRef(null);
-    const inputRef = useRef(null);
-    const [output, setOutput] = useState<any[]>([{
+    const inputRef = useRef<HTMLInputElement>(null);
+    const initOutput = {
         "id": output_count,
         "username": username,
         "hostname": hostname,
         "path": path,
         "symbol": symbol,
         "command": "welcome",
-        "args": "",
+        "args": [""],
         "out": Welcome(),
-    }]);
+    } as unknown as OutputType
+    const [output, setOutput] = useState<{
+        id?: number;
+        username: string;
+        hostname: string;
+        path: string;
+        symbol: string;
+        command: string;
+        args: string[] | string;
+        out: unknown;
+    }[]>([initOutput]);
 
 
     useEffect(()=>{
-        inputRef.current.focus();
+        inputRef.current?.focus();
     },[])
 
     const handleClick = useCallback(
         () => {
-            inputRef.current.focus();
+            inputRef.current?.focus();
         },[])
 
     const handleChange = useCallback(
@@ -87,28 +108,28 @@ const Terminal = () => {
             }
 
             const newOutput = Command(
-                cmd, 
+                cmd,
                 args,
                 output_count,
-                username, 
-                hostname, 
-                path, 
+                username,
+                hostname,
+                path,
                 symbol,
                 setUsername,
                 setHostname,
                 setOutput,
                 setTheme,
-                history,
-            )
+                history
+            ) as unknown as OutputType
             setOutput([newOutput, ...output])
             setInput("");
 
             if (cmd == "exit") {
                 window.open("https://tu-nguyen.github.io/", "_self")
             } else if (cmd in link_map) {
-                window.open(link_map[cmd])
+                window.open(link_map[cmd as keyof typeof link_map])
             } else if (cmd == "socials" && args[0] in link_map) {
-                window.open(link_map[args[0]])
+                window.open(link_map[args[0] as keyof typeof link_map])
             }
         }
     )

@@ -1,6 +1,5 @@
-import { useState } from 'react'
-import { BrowserRouter, Route, RouterProvider, Routes } from "react-router-dom";
-import router from "./router";
+import { RouterProvider } from "react-router-dom";
+import router from "./router/index";
 
 function App() {
   return <RouterProvider router={router} />;

@@ -1,8 +1,5 @@
-import React from 'react'
-
-
 const Help = ({ls=false}) => {
-    function display_alt(ls) {
+    function display_alt(ls: boolean) {
         if (ls) {
             return <><p>Did you mean <a className="link">help?</a></p><br /></>
         }

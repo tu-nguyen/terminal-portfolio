@@ -1,7 +1,4 @@
-import React from 'react'
-
-
-const Echo = ({args}) => {
+const Echo = ({args}: {args: string}) => {
     return (
         <>
         <p>{args}</p><br />

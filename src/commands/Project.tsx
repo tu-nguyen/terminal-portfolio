@@ -1,6 +1,4 @@
-import React from 'react'
-
-const Project = ({ project }) => {
+const Project = ({ project }: { project: {title: string, date: string, description: string, technologiesUsed: string[], githubLink: string} }) => {
     // let tect = job.skills.join("    ");
     
     return (

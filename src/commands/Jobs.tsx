@@ -1,4 +1,3 @@
-import React from 'react'
 import jobs from '../data/jobs.json'
 import Job from './Job';
 
