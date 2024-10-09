@@ -7,6 +7,6 @@ const router = createBrowserRouter([
       path: "/",
       element: <Terminal />,
     },
-  ]);
+  ], {basename: "/terminal-portfolio"});
   
   export default router;

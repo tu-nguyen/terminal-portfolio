@@ -5,7 +5,7 @@ import { viteStaticCopy  } from 'vite-plugin-static-copy'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/terminal-portfolio",
+  
   plugins: [
     react(),
     viteStaticCopy({
@@ -17,6 +17,7 @@ export default defineConfig({
       ]
     })
   ],
+  base: "/terminal-portfolio/",
   build: {
     outDir: "dist",
   }
