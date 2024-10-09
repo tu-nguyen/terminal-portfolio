@@ -16,7 +16,7 @@ export default defineConfig({
       ]
     })
   ],
-  base: "./",
+  base: "/terminal-portfolio",
   build: {
     outDir: "dist",
   }
