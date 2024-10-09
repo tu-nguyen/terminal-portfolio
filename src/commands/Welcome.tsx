@@ -5,7 +5,7 @@ const Welcome = () => {
             <div>----------------------------</div>
             <div>
             This project's source code can be found in this project's{" "}
-            <a className="link" href="https://github.com/tu-nguyen/tu-nguyen.github.io">
+            <a className="link" href="https://github.com/tu-nguyen/terminal-portfolio">
                 GitHub repo
             </a>.<br />
             <p>To view v1 or v2 of the gui version type <span className="link">exit</span></p>
