@@ -11,37 +11,41 @@ import Contact from "../commands/Contact";
 import SetTheme from "../commands/SetTheme";
 import Skills from "../commands/Skills";
 import History from "../commands/History";
+import Sudo from "../commands/Sudo";
 
 
 const Command = (
-    cmd: string, 
+    cmd: string,
     args: string[],
-    output_count: number, 
-    username: string, 
-    hostname: string, 
-    path: string, 
+    output_count: number,
+    username: string,
+    hostname: string,
+    path: string,
     symbol: string,
+    setSymbol: { (value: React.SetStateAction<string>): void; (value: React.SetStateAction<string>): void; },
     setUsername: { (value: React.SetStateAction<string>): void; (value: React.SetStateAction<string>): void; },
     _setHostname: { (value: React.SetStateAction<string>): void; (value: React.SetStateAction<string>): void; },
-    setOutput: { (value: React.SetStateAction<{
-        id?: number;
-        username: string;
-        hostname: string;
-        path: string;
-        symbol: string;
-        command: string;
-        args: string[] | string;
-        out: unknown;
-    }[]>): void; (value: React.SetStateAction<{
-        id?: number;
-        username: string;
-        hostname: string;
-        path: string;
-        symbol: string;
-        command: string;
-        args: string[] | string;
-        out: unknown;
-    }[]>): void; },
+    setOutput: {
+        (value: React.SetStateAction<{
+            id?: number;
+            username: string;
+            hostname: string;
+            path: string;
+            symbol: string;
+            command: string;
+            args: string[] | string;
+            out: unknown;
+        }[]>): void; (value: React.SetStateAction<{
+            id?: number;
+            username: string;
+            hostname: string;
+            path: string;
+            symbol: string;
+            command: string;
+            args: string[] | string;
+            out: unknown;
+        }[]>): void;
+    },
     setTheme: { (value: React.SetStateAction<string>): void; (value: React.SetStateAction<string>): void; },
     history: string[],
 ): {
@@ -59,8 +63,8 @@ const Command = (
         "test": "test\n",
         "welcome": <Welcome />,
         "help": <Help />,
-        "ls": <Help ls={true}/>,
-        "whoami": <Echo args={username}/>,
+        "ls": <Help ls={true} />,
+        "whoami": <Echo args={username} />,
         "about": <About />,
         "exp": <Jobs />,
         "experience": <Jobs />,
@@ -90,7 +94,9 @@ const Command = (
         "hist": <History history={history} />,
         "history": <History history={history} />,
         "echo": <Echo args={args.join(" ")} />,
-    }[cmd]
+        "su": <Sudo setSymbol={setSymbol} />,
+        "sudo": <Sudo setSymbol={setSymbol} />,
+    }[cmd.toLocaleLowerCase().trim()]
 
     return ({
         "id": output_count,

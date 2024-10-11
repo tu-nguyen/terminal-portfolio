@@ -1,9 +1,9 @@
 const About = () => {
     return (
         <>
-        <p>Hey there! I'm Tu!</p><br />
-        <p>I'm a software engineer from Boston</p>
-        <br />
+            <p>Hey there! I'm Tu!</p><br />
+            <p>I'm a software engineer from Boston</p>
+            <br />
         </>
     );
 };

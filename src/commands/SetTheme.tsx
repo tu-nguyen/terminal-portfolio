@@ -1,29 +1,29 @@
-import { Dispatch, useEffect } from 'react'
+import { Dispatch, useEffect } from 'react';
 
 
-const SetTheme = ({setTheme, arg, newTheme}: {setTheme: Dispatch<string>, arg: string, newTheme: string}) => {
+const SetTheme = ({ setTheme, arg, newTheme }: { setTheme: Dispatch<string>, arg: string, newTheme: string }) => {
     if (arg == "" || arg == null) {
         return (
-        <>
-        <p>usage: theme [arg]...</p>
-        <pre>   [args]</pre>
-        <pre>       ls: list all available themes</pre>
-        <pre>       set: set theme to [theme]</pre>
-        <pre>   [examples]</pre>
-        <pre>       theme ls</pre>
-        <pre>       theme set dark</pre>
-        </>
+            <>
+                <p>usage: <p className="highlight">theme</p> [arg]...</p>
+                <pre>   [args]</pre>
+                <pre>       <p className="highlight">ls</p>: list all available themes</pre>
+                <pre>       <p className="highlight">set</p>: set theme to [theme]</pre>
+                <pre>   [examples]</pre>
+                <pre>       <p className="highlight">theme</p> ls</pre>
+                <pre>       <p className="highlight">theme</p> set dark</pre>
+            </>
         )
     } else if (arg == "ls" || arg == "list") {
         return (
-        <>
-        <p>dark</p><br />
-        <p>ubuntu</p><br />
-        <p>matrix</p><br />
-        <p>dark-dracula</p><br />
-        <p>solar</p>
-        <br />
-        </>
+            <>
+                <p className="highlight">dark</p><br />
+                <p className="highlight">ubuntu</p><br />
+                <p className="highlight">matrix</p><br />
+                <p className="highlight">dark-dracula</p><br />
+                <p className="highlight">solar</p>
+                <br />
+            </>
         )
     } else if (arg == "set") {
         if (newTheme == "" || newTheme == null || !["dark", "ubuntu", "matrix", "dark-dracula", "solar"].includes(newTheme)) {
@@ -32,7 +32,7 @@ const SetTheme = ({setTheme, arg, newTheme}: {setTheme: Dispatch<string>, arg: s
             // eslint-disable-next-line react-hooks/rules-of-hooks
             useEffect(() => {
                 setTheme(newTheme);
-              }, [newTheme, setTheme]);
+            }, [newTheme, setTheme]);
         }
     } else {
         return <>{arg} is not a valid theme [arg]<br /></>

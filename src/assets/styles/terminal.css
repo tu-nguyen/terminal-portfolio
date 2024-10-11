@@ -30,6 +30,10 @@
   /* background-color: aqua; */
 }
 
+.prompt {
+  display: inline-block;
+}
+
 .terminal input {
   border: none;
   outline: none;
@@ -51,58 +55,92 @@
   display: inline;
 }
 
-span, form, form > label, form > input, p, pre, div, a {
+span, form, form > label, form > input, p, pre, div, a, strong {
   background-color: inherit;
   color: inherit;
   margin: 0;
   padding: 0;
 }
 
+/* themes */
+/* dark */
 .dark {
-  background-color: #121212;
-  color: #eee
+  background-color: #1d1f21;
+  color: #969896
+}
+
+.dark .path {
+  color: #3971ed;
+}
+
+.dark .highlight {
+  color: #0cebd0;
 }
 
 .dark .link {
-  color: #4b4aec;
+  color: #2ac97b;
 }
 
 .dark-prompt {
-  display: inline-block;
-  color: lightblue;
+  color: #198844;
 }
 
+/* ubuntu */
 .ubuntu {
   background-color: #300a24;
   color: #fff
 }
 
-.ubuntu .link {
+.ubuntu .path {
+  color: #719bd2;
+}
+
+.ubuntu .highlight {
   color: #4b4aec;
 }
 
-.ubuntu-prompt {
-  display: inline-block;
-  color: #4c7115;
+.ubuntu .link {
+  color: #85de33;
 }
 
+.ubuntu-prompt {
+  color: #a1d45e;
+}
+
+/* matrix */
 .matrix {
   background-color: #000100;
   color: #01d000
 }
 
+.matrix .path {
+  color: #89eafe;
+}
+
+.matrix .highlight {
+  color: #4c8b4e;
+}
+
 .matrix .link {
-  color: #01d000;
+  color: #82f68b;
 }
 
 .matrix-prompt {
-  display: inline-block;
   color: #7ed22c;
 }
 
+/* dracula-dark */
 .dark-dracula {
-  background-color: #1e1f29;
-  color: #fff
+  background-color: #282a37;
+  color: #f8f9f2
+}
+
+.dark-dracula .path {
+  color: #82f68b;
+}
+
+.dark-dracula .highlight {
+  color: #50fb7b;
 }
 
 .dark-dracula .link {
@@ -110,21 +148,28 @@ span, form, form > label, form > input, p, pre, div, a {
 }
 
 .dark-dracula-prompt {
-  display: inline-block;
-  color: #5ca5e1;
+  color: #bd93fa;
 }
 
+/* solar */
 .solar {
   background-color: #fdf6e3;
-  color: #98a4a3
+  color: #6d8288
 }
 
-.solar .link {
+.solar .path {
+  color: #6d8288;
+}
+
+.solar .highlight {
   color: #73951d;
 }
 
+.solar .link {
+  color: #5f8700;
+}
+
 .solar-prompt {
-  display: inline-block;
   color: #2697fb;
 }
 

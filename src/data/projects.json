@@ -1,74 +1,82 @@
 [
     {
+        "id": 8,
+        "title": "terminal-portfolio",
+        "description": "(this) Terminal Portfolio website made with React, TypeScript, Vite, and Tailwind CSS.",
+        "technologiesUsed": ["React", "TypeScript", "Vite", "TailwindCSS"],
+        "githubLink": "https://github.com/tu-nguyen/terminal-portfolio",
+        "demo": false,
+        "demoLink": "",
+        "date": "Oct 2024"
+    },
+    {
+        "id": 7,
+        "title": "razer-mouse-battery-notify",
+        "description": "A Python script that shows the battery level of a Razer Viper V2 Pro Wireless mouse (or other Razer mouse with modification) as a notification to your Home Assistant.",
+        "technologiesUsed": ["Python", "PowerShell", "API"],
+        "githubLink": "https://github.com/tu-nguyen/razer-mouse-battery-notify",
+        "demo": false,
+        "demoLink": "",
+        "date": "Sep 2024"
+    },
+    {
         "id": 6,
         "title": "django-comichost",
         "description": "Comic hosting website made with Python, Django, PostgreSQL deployed to Heroku.",
         "technologiesUsed": ["Python", "Django", "JavaScript", "NodeJS", "PostgreSQL", "API"],
-        "imageLink": "./assets/images/projects/project1.jpg",
-        "previewImageLink": "",
         "githubLink": "https://github.com/tu-nguyen/django-comichost",
         "demo": true,
         "demoLink": "https://sheltered-dusk-19931-1c9a82efd65a.herokuapp.com/",
-        "date": "2023/10"
+        "date": "Oct 2023"
     },
     {
         "id": 5,
         "title": "burrito-bot",
         "description": "Discord and Twitch bot for the burrito guy server written with NodeJS; listens for clips and post on discord as well as other commands. Deployed on AWS.",
         "technologiesUsed": ["JavaScript", "NodeJs", "API", "AWS"],
-        "imageLink": "./assets/images/projects/project2.jpg",
-        "previewImageLink": "",
         "githubLink": "https://github.com/tu-nguyen/burrito-bot",
         "demo": false,
         "demoLink": "",
-        "date": "2022/05"
+        "date": "May 2022"
     },
     {
         "id": 4,
         "title": "django-chatapp",
         "description": "Real time Chat Room App made with Python, Django, Javascript, and AJAX.",
         "technologiesUsed": ["Python", "Django", "JavaScript"],
-        "imageLink": "./assets/images/projects/project3.jpg",
-        "previewImageLink": "",
         "githubLink": "https://github.com/tu-nguyen/django-chatapp",
         "demo": false,
         "demoLink": "",
-        "date": "2021/06"
+        "date": "Jun 2021"
     },
     {
         "id": 3,
         "title": "Boston Crime EDA",
         "description": "Basic EDA with Boston's crime data from 2012 - 2015.",
         "technologiesUsed": ["Python", "numpy", "pandas", "matplotlib", "seaborn", "Jupyter Notebook", "Data Science"],
-        "imageLink": "./assets/images/projects/project2.jpg",
-        "previewImageLink": "",
         "githubLink": "https://github.com/tu-nguyen/analytical-exploration-of-Boston-crime-statistics-2012-2015",
         "demo": false,
         "demoLink": "",
-        "date": "2019/04"
+        "date": "Apr 2019"
     },
     {
         "id": 2,
         "title": "MultiWeather",
         "description": "Android app that makes API calls, parses receiving JSON data for weather information, and aggregates those data. Final project for CS410.",
         "technologiesUsed": ["Java", "Android", "API"],
-        "imageLink": "./assets/images/projects/project1.jpg",
-        "previewImageLink": "",
         "githubLink": "https://github.com/tu-nguyen/multiWeather",
         "demo": false,
         "demoLink": "",
-        "date": "2017/12"
+        "date": "Dec 2017"
     },
     {
         "id": 1,
         "title": "AccelerometerPlay",
         "description": "Simple app that uses phone's sensor - Final project for CS443.",
         "technologiesUsed": ["Java", "Android"],
-        "imageLink": "./assets/images/projects/project3.jpg",
-        "previewImageLink": "",
         "githubLink": "https://github.com/tu-nguyen/cs443-project",
         "demo": false,
         "demoLink": "",
-        "date": "2017/12"
+        "date": "Dec 2017"
     }
 ]

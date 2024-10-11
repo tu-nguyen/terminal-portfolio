@@ -2,7 +2,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Command from '../components/Command';
 import Output from '../components/Output';
-import { link_map } from '../data/links'
+import { link_map } from '../data/links';
 import Welcome from '../commands/Welcome';
 
 
@@ -17,18 +17,18 @@ interface OutputType {
     out: unknown;
 };
 
-let output_count = 1
+let output_count = 1;
 
 const Terminal = () => {
     const [input, setInput] = useState("");
     const [history, setHistory] = useState<string[]>(["welcome"]);
     const [pointer, setPointer] = useState(-1);
-    const [username, setUsername] = useState("guest")
-    const [hostname, setHostname] = useState("tu-nguyen.github.io")
-    const [path] = useState("~") // temp removed setPath
-    const [symbol] = useState("$") // temp removed setSymbol
-    const [theme, setTheme] = useState("ubuntu")
-    // const [link, setLink] = useState("")
+    const [username, setUsername] = useState("guest");
+    const [hostname, setHostname] = useState("tu-nguyen.github.io");
+    const [path] = useState("~"); // temp removed setPath
+    const [symbol, setSymbol] = useState("$");
+    const [theme, setTheme] = useState("dark");
+    // const [link, setLink] = useState("");
     const containerRef = useRef(null);
     const inputRef = useRef<HTMLInputElement>(null);
     const initOutput = {
@@ -40,7 +40,7 @@ const Terminal = () => {
         "command": "welcome",
         "args": [""],
         "out": Welcome(),
-    } as unknown as OutputType
+    } as unknown as OutputType;
     const [output, setOutput] = useState<{
         id?: number;
         username: string;
@@ -53,28 +53,26 @@ const Terminal = () => {
     }[]>([initOutput]);
 
 
-    useEffect(()=>{
+    useEffect(() => {
         inputRef.current?.focus();
-    },[])
+    }, []);
 
     const handleClick = useCallback(
         () => {
             inputRef.current?.focus();
-        },[])
+        }, []);
 
     const handleChange = useCallback(
-        (        e: { target: { value: React.SetStateAction<string>; }; }) => {
+        (e: { target: { value: React.SetStateAction<string>; }; }) => {
             setInput(e.target.value);
-        }, 
-        []
-    )
+        }, []);
 
     const handleKeyDown = useCallback(
-        (        e: { key: string; }) => {
+        (e: { key: string; }) => {
             if (e.key === "Enter") {
                 console.log("enter")
             } else if (e.key === "ArrowUp") {
-                if ( pointer >= history.length || pointer + 1 == history.length ) {
+                if (pointer >= history.length || pointer + 1 == history.length) {
                     return;
                 }
                 setInput(history[pointer + 1])
@@ -87,16 +85,14 @@ const Terminal = () => {
                     setInput("");
                     setPointer(-1);
                     return;
-                  }
-                  setInput(history[pointer - 1]);
-                  setPointer(prevState => prevState - 1);
+                }
+                setInput(history[pointer - 1]);
+                setPointer(prevState => prevState - 1);
             };
-        }, 
-        [history, pointer]
-    )
+        }, [history, pointer]);
 
     const handleSubmit = (
-        (        e: { preventDefault: () => void; }) => {
+        (e: { preventDefault: () => void; }) => {
             e.preventDefault();
             const input_arr = input.split(/\s+/)
             const cmd = input_arr[0]
@@ -115,6 +111,7 @@ const Terminal = () => {
                 hostname,
                 path,
                 symbol,
+                setSymbol,
                 setUsername,
                 setHostname,
                 setOutput,
@@ -142,11 +139,11 @@ const Terminal = () => {
             ref={containerRef}
             onClick={handleClick}
         >
-            <Output output={output} theme={theme}/>
+            <Output output={output} theme={theme} />
             <form onSubmit={handleSubmit}>
-                <label htmlFor="terminal-input"><div className={prompt_theme}>{username}@{hostname}</div>~$ </label>
+                <label htmlFor="terminal-input"><div className={`${prompt_theme} prompt`}>{username}@{hostname}</div><p className="path">{path}</p>{symbol} </label>
                 <input
-                    id = "terminal-input"
+                    id="terminal-input"
                     title="terminal-input"
                     type="text"
                     value={input}

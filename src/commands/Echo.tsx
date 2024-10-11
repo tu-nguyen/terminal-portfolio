@@ -1,7 +1,7 @@
-const Echo = ({args}: {args: string}) => {
+const Echo = ({ args }: { args: string }) => {
     return (
         <>
-        <p>{args}</p><br />
+            <p>{args}</p><br />
         </>
     );
 };
