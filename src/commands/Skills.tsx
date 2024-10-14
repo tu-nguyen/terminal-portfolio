@@ -1,4 +1,49 @@
-const Skills = () => {
+const Skills = ({ args }: {args: string[]}) => {
+
+    if (args) {
+        if (args[0] == "ls" || args[0] == "list") {
+            return (
+                <>
+                    <p className="highlight">python</p><br />
+                    <p className="highlight">django</p><br />
+                    <p className="highlight">react</p><br />
+                    <p className="highlight">javascript</p><br />
+                    <p className="highlight">sql</p><br />
+                    <p className="highlight">devops</p>
+                    <br />
+                </>
+            )
+        } else if (["python", "django", "react", "javascript", "sql", "devops"].includes(args[0])) {
+            const skillOut = {
+                "python":   <>
+                                <p>This output is currently in todo</p>
+                            </>,
+                "django":   <>
+                                <p>This output is currently in todo</p>
+                            </>,
+                "react":   <>
+                                <p>This output is currently in todo</p>
+                            </>,
+                "javascript":   <>
+                                <p>This output is currently in todo</p>
+                            </>,
+                "sql":   <>
+                                <p>This output is currently in todo</p>
+                            </>,
+                "devops":   <>
+                                <p>This output is currently in todo</p>
+                            </>,
+            }[args[0].toLocaleLowerCase().trim()]
+
+            return (
+                <>
+                    {skillOut}
+                </>
+            )
+        }
+    }
+
+
     return (
         <>
             <p>usage: <p className="highlight">skills</p> [arg]...</p>

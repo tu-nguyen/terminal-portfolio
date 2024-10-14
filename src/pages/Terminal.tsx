@@ -31,6 +31,7 @@ const Terminal = () => {
     // const [link, setLink] = useState("");
     const containerRef = useRef(null);
     const inputRef = useRef<HTMLInputElement>(null);
+    const scrollToRef = useRef<HTMLDivElement>(null);
     const initOutput = {
         "id": output_count,
         "username": username,
@@ -55,7 +56,10 @@ const Terminal = () => {
 
     useEffect(() => {
         inputRef.current?.focus();
-    }, []);
+
+        scrollToRef.current?.scrollIntoView({ behavior: "smooth" });
+
+    }, [history, input, output]);
 
     const handleClick = useCallback(
         () => {
@@ -68,9 +72,15 @@ const Terminal = () => {
         }, []);
 
     const handleKeyDown = useCallback(
-        (e: { key: string; }) => {
-            if (e.key === "Enter") {
-                console.log("enter")
+        (e: { 
+            key: string; preventDefault: () => void; 
+        }) => {
+            if (e.key === "Tab") {
+                e.preventDefault();
+                if (!input) return;
+                
+                console.log("tab completetion on todo")
+
             } else if (e.key === "ArrowUp") {
                 if (pointer >= history.length || pointer + 1 == history.length) {
                     return;
@@ -133,26 +143,32 @@ const Terminal = () => {
 
     const prompt_theme = theme + "-prompt"
 
+
     return (
-        <div
-            className={`${theme} terminal`}
-            ref={containerRef}
-            onClick={handleClick}
-        >
-            <Output output={output} theme={theme} />
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="terminal-input"><div className={`${prompt_theme} prompt`}>{username}@{hostname}</div><p className="path">{path}</p>{symbol} </label>
-                <input
-                    id="terminal-input"
-                    title="terminal-input"
-                    type="text"
-                    value={input}
-                    onChange={handleChange}
-                    onKeyDown={handleKeyDown}
-                    ref={inputRef}
-                />
-            </form>
-        </div >
+        <>
+            <div
+                className={`${theme} terminal`}
+                ref={containerRef}
+                onClick={handleClick}
+            >
+                <Output output={output} theme={theme}/>
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="terminal-input"><div className={`${prompt_theme} prompt`}>{username}@{hostname}</div><p className="path">{path}</p>{symbol} </label>
+                    <input
+                        id="terminal-input"
+                        title="terminal-input"
+                        type="text"
+                        value={input}
+                        onChange={handleChange}
+                        onKeyDown={handleKeyDown}
+                        ref={inputRef}
+                        autoFocus
+                    />
+                </form>
+            </div >
+
+            <div ref={scrollToRef} />
+        </>
     );
 };
 
