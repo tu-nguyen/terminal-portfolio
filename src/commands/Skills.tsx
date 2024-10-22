@@ -7,7 +7,9 @@ const Skills = ({ args }: {args: string[]}) => {
                     <p className="highlight">python</p><br />
                     <p className="highlight">django</p><br />
                     <p className="highlight">react</p><br />
+                    <p className="highlight">nextjs</p><br />
                     <p className="highlight">javascript</p><br />
+                    <p className="highlight">typescript</p><br />
                     <p className="highlight">sql</p><br />
                     <p className="highlight">devops</p>
                     <br />
@@ -16,22 +18,28 @@ const Skills = ({ args }: {args: string[]}) => {
         } else if (["python", "django", "react", "javascript", "sql", "devops"].includes(args[0])) {
             const skillOut = {
                 "python":   <>
-                                <p>This output is currently in todo</p>
+                                <p>Python is my main language of choice!</p>
                             </>,
                 "django":   <>
-                                <p>This output is currently in todo</p>
+                                <p>Of the major python web framework, I have an obvious bias with this one, but I have used Flask, and FastAPI</p>
                             </>,
                 "react":   <>
-                                <p>This output is currently in todo</p>
+                                <p>Although VueJS is my preferred out of the big three, I've used ReactJS the most.</p>
+                            </>,
+                "nextjs":   <>
+                                <p>Currently learning!</p>
                             </>,
                 "javascript":   <>
-                                <p>This output is currently in todo</p>
-                            </>,
-                "sql":   <>
-                                <p>This output is currently in todo</p>
-                            </>,
+                                    <p>Proficient with this, and TypeScript</p>
+                                </>,
+                "typescript":   <>
+                                    <p>Proficient with this, and JavaScript</p>
+                                </>,
+                "sql":  <>
+                            <p>Learned SQL in college, and have used it professionally ever since</p>
+                        </>,
                 "devops":   <>
-                                <p>This output is currently in todo</p>
+                                <p>Currently learning!</p>
                             </>,
             }[args[0].toLocaleLowerCase().trim()]
 

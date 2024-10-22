@@ -12,6 +12,8 @@ import SetTheme from "../commands/SetTheme";
 import Skills from "../commands/Skills";
 import History from "../commands/History";
 import Sudo from "../commands/Sudo";
+import DateCommand from "../commands/DateCommand";
+import Weather from "../commands/Weather";
 
 
 const Command = (
@@ -94,6 +96,10 @@ const Command = (
         "hist": <History history={history} />,
         "history": <History history={history} />,
         "echo": <Echo args={args.join(" ")} />,
+        "date": <DateCommand />,
+        "datetime": <DateCommand />,
+        "now": <DateCommand />,
+        "weather": <Weather />,
         "su": <Sudo setSymbol={setSymbol} />,
         "sudo": <Sudo setSymbol={setSymbol} />,
     }[cmd.toLocaleLowerCase().trim()]

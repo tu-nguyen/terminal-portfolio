@@ -26,6 +26,8 @@ const Help = ({ ls = false }) => {
                     <p className="highlight">clear</p><br />
                     <p className="highlight">history</p><br />
                     <p className="highlight">echo</p><br />
+                    <p className="highlight">date</p><br />
+                    <p className="highlight">weather</p><br />
                     <p className="highlight">exit</p><br />
                 </div>
                 <div>
@@ -46,6 +48,8 @@ const Help = ({ ls = false }) => {
                     <pre>       - clear the terminal output</pre>
                     <pre>       - view command history</pre>
                     <pre>       - print out anything</pre>
+                    <pre>       - print the current date and time</pre>
+                    <pre>       - print the current weather</pre>
                     <pre>       - go back to main portfolio page</pre>
                 </div>
             </div>
