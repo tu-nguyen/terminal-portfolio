@@ -18,6 +18,8 @@ function Output({ output, theme }: {
     function Display({ cmd, output }: { cmd: string | null, output: unknown }) {
         if (cmd == "" || cmd == null) {
             return <><br /></>
+        } else if (cmd == "-autocomplete") {
+            return <><br />{output}<br /></>
         } else if (!output) {
             return <><br />{cmd} is not a valid command<br /></>
         } else {
@@ -31,7 +33,7 @@ function Output({ output, theme }: {
         <>
             {temp_output.map((out) => (
                 <>
-                    <Prompt key={out.id} out={out} theme={theme} /> {out.command} {out.args}
+                    <Prompt key={out.id} out={out} theme={theme} /> {out.command != "-autocomplete" ? out.command : out.args } {out.command != "-autocomplete" ? out.args : ""}
                     <Display cmd={out.command} output={out.out} />
                     {/* <br />{out.out}<br /> */}
                 </>

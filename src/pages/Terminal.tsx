@@ -28,6 +28,7 @@ const Terminal = () => {
     const [path] = useState("~"); // temp removed setPath
     const [symbol, setSymbol] = useState("$");
     const [theme, setTheme] = useState("dark");
+    const tabCount = useRef(0);
     // const [link, setLink] = useState("");
     const containerRef = useRef(null);
     const inputRef = useRef<HTMLInputElement>(null);
@@ -71,15 +72,56 @@ const Terminal = () => {
             setInput(e.target.value);
         }, []);
 
+    const temp = ["welcome", "help", "echo",  "project", "hell", "tess", "test"]
+
+    function autoCompleteCommand(target: string) {
+         const res = target ? temp.filter((x) => x.startsWith(target)) : undefined;
+         return res
+    }
+
+    useEffect(() => {
+        const id = setInterval(() => {
+            tabCount.current = 0;
+        }, 6000);
+        return () => clearInterval(id);
+      }, []);
+
     const handleKeyDown = useCallback(
-        (e: { 
-            key: string; preventDefault: () => void; 
+        (e: {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            target: any;
+            key: string; preventDefault: () => void;
         }) => {
             if (e.key === "Tab") {
                 e.preventDefault();
-                if (!input) return;
+                const currentInput = e.target.value
+
+                if (!currentInput) return;
                 
-                console.log("tab completetion on todo")
+                const possibleCommands = autoCompleteCommand(currentInput)
+                if (possibleCommands?.length == 0) return;
+                
+                else if (possibleCommands?.length == 1) {
+                    setInput(possibleCommands[0]);
+                }
+                 else {
+                    tabCount.current++;
+                    if (tabCount.current > 3) {
+                        output_count++
+                        const newOutput = {
+                            "id": output_count,
+                            "username": username,
+                            "hostname": hostname,
+                            "path": path,
+                            "symbol": symbol,
+                            "command": "-autocomplete",
+                            "args": currentInput,
+                            "out": possibleCommands?.join(" "),
+                        }
+                        setOutput([newOutput, ...output])
+                        setInput(currentInput)
+                    }
+                }
 
             } else if (e.key === "ArrowUp") {
                 if (pointer >= history.length || pointer + 1 == history.length) {
@@ -109,7 +151,7 @@ const Terminal = () => {
             const args = input_arr.slice(1)
 
             if (input == "" || input == null || input == undefined) { /* empty */ } else {
-                output_count += 1
+                output_count++
                 setHistory([input, ...history]);
             }
 
