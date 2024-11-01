@@ -29,6 +29,8 @@ const Terminal = () => {
     const [symbol, setSymbol] = useState("$");
     const [theme, setTheme] = useState("dark");
     const tabCount = useRef(0);
+    const autocomplete = useRef("");
+    // const [autocomplete, setAutocomplete] = useState("");
     // const [link, setLink] = useState("");
     const containerRef = useRef(null);
     const inputRef = useRef<HTMLInputElement>(null);
@@ -94,9 +96,15 @@ const Terminal = () => {
         }) => {
             if (e.key === "Tab") {
                 e.preventDefault();
+                console.log("auto:")
+                console.log(autocomplete)
                 const currentInput = e.target.value
 
                 if (!currentInput) return;
+
+                if (autocomplete.current == currentInput) return;
+
+                autocomplete.current = ""
                 
                 const possibleCommands = autoCompleteCommand(currentInput)
                 if (possibleCommands?.length == 0) return;
@@ -106,6 +114,7 @@ const Terminal = () => {
                 }
                  else {
                     tabCount.current++;
+
                     if (tabCount.current > 3) {
                         output_count++
                         const newOutput = {
@@ -118,8 +127,10 @@ const Terminal = () => {
                             "args": currentInput,
                             "out": possibleCommands?.join(" "),
                         }
+                        output_count++
                         setOutput([newOutput, ...output])
                         setInput(currentInput)
+                        autocomplete.current = currentInput
                     }
                 }
 

@@ -2,7 +2,7 @@ const DateCommand = () => {
     const dateTime: Date = new Date();
 
     return <>
-    {dateTime.toLocaleString()}
+    <p>{dateTime.toLocaleString()}</p>
     <br />
     </>
 };
