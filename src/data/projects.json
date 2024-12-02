@@ -21,6 +21,16 @@
     },
     {
         "id": 6,
+        "title": "Boston Crime EDA",
+        "description": "Analytical Exploration of Boston Crime Statistics from 2012 - 2015.",
+        "technologiesUsed": ["Python", "numpy", "pandas", "matplotlib", "seaborn", "Jupyter Notebook", "Data Science"],
+        "githubLink": "https://github.com/tu-nguyen/analytical-exploration-of-Boston-crime-statistics-2012-2015",
+        "demo": false,
+        "demoLink": "https://github.com/tu-nguyen/analytical-exploration-of-Boston-crime-statistics/blob/main/Analytical%20Exploration%20of%20Boston%20Crime%20Statistics.ipynb",
+        "date": "Mar 2019"
+    },
+    {
+        "id": 5,
         "title": "django-comichost",
         "description": "Comic hosting website made with Python, Django, PostgreSQL deployed to Heroku.",
         "technologiesUsed": ["Python", "Django", "JavaScript", "NodeJS", "PostgreSQL", "API"],
@@ -30,7 +40,7 @@
         "date": "Oct 2023"
     },
     {
-        "id": 5,
+        "id": 4,
         "title": "burrito-bot",
         "description": "Discord and Twitch bot for the burrito guy server written with NodeJS; listens for clips and post on discord as well as other commands. Deployed on AWS.",
         "technologiesUsed": ["JavaScript", "NodeJs", "API", "AWS"],
@@ -40,7 +50,7 @@
         "date": "May 2022"
     },
     {
-        "id": 4,
+        "id": 3,
         "title": "django-chatapp",
         "description": "Real time Chat Room App made with Python, Django, Javascript, and AJAX.",
         "technologiesUsed": ["Python", "Django", "JavaScript"],
@@ -48,16 +58,6 @@
         "demo": false,
         "demoLink": "",
         "date": "Jun 2021"
-    },
-    {
-        "id": 3,
-        "title": "Boston Crime EDA",
-        "description": "Basic EDA with Boston's crime data from 2012 - 2015.",
-        "technologiesUsed": ["Python", "numpy", "pandas", "matplotlib", "seaborn", "Jupyter Notebook", "Data Science"],
-        "githubLink": "https://github.com/tu-nguyen/analytical-exploration-of-Boston-crime-statistics-2012-2015",
-        "demo": false,
-        "demoLink": "",
-        "date": "Apr 2019"
     },
     {
         "id": 2,
